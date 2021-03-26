@@ -112,7 +112,9 @@ points_pca <- points_prep %>%
 res.pca <- PCA(points_pca, graph = FALSE)
 
 #Draw screeplot of PCs
-fviz_screeplot(res.pca, ncp = 5)
+fviz_screeplot(res.pca, 
+               ncp = 5,
+               title = "First five principal components")
 ```
 
 
@@ -124,11 +126,13 @@ fviz_contrib(res.pca,
              fill = "black",
              color = "black",
              axes = 1,
-             top = 10) +
+             top = 10,
+             title = "Contribution of variables to PC 1") +
   theme_bw()
 ```
   
   
+    
 ```{r scree-pc2, fig.cap="Contributions of variables to PC 2"}
 #Screeplot of contributing variables to PC2
 fviz_contrib(res.pca,
@@ -136,13 +140,14 @@ fviz_contrib(res.pca,
              fill = "black",
              color = "black",
              axes = 2,
-             top = 10) +
+             top = 10,
+             title = "Contribution of variables to PC 1") +
   theme_bw()
 ```
   
 The result of the PCA analysis can be seen in figure \@ref(fig:pca-biplot). Most of the measurements group in a larger cluster, demonstrating little difference in their elemental composition in regards to the  color of the quartzite.  
 
-```{r pca-biplot, fig.height=8, fig.width=10, fig.cap="Biplot of PCA analysis with PC1 and PC2, no clear clustering can be seen related to the color of the material"}
+```{r pca-biplot, fig.height=8,fig.width=10, fig.cap="Biplot of PCA analysis with PC1 and PC2, no clear clustering can be seen related to the color of the material"}
 #Draw biplot to visualize result
 fviz_pca_biplot(res.pca, axes = c(1, 2),
                 geom.ind = "point", # show points only (but not "text")
