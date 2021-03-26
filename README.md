@@ -5,7 +5,7 @@
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MattiasSealander/MyTestProject/master?urlpath=rstudio)
 
-This repository contains the data and code for our paper:
+This repository contains the data and code for an exercise given within a workshop with the "Dialogues with the Past" doctoral school:
 
 > Authors, (YYYY). *Title of your paper goes here*. Name of journal/book
 > <https://doi.org/xxx/xxx>
