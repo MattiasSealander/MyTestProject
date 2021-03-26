@@ -101,11 +101,8 @@ points_no_na <- points_mean[, unlist(lapply(points_mean, function(x) !all(is.na(
 points_prep <- points_no_na[ - as.numeric(which(apply(points_no_na, 2, var) == 0))]
 ```
 
-The above figure \@ref(fig:screeplot) visualises the explained variance of the 5 first principal components (PC). As can be seen most of the variance is explained in the first two PCs. Figures \@ref(fig:scree-pc1) and  \@ref(fig:scree-pc2) shows the 10 main contributing variables to each component.
-
-
-
-```{r screeplot, fig.cap="Screeplot for PCs"}
+The below figure \@ref(fig:screeplot) visualises the explained variance of the 5 first principal components (PC). As can be seen most of the variance is explained in the first two PCs.  
+```{r screeplot, fig.cap="Screeplot for the five first principal components"}
 #Prep data for PCA, select only the compositional data
 points_pca <- points_prep %>% 
   select(reading_no,Mg:Ba) %>%  
@@ -119,7 +116,7 @@ fviz_screeplot(res.pca, ncp = 5)
 ```
 
 
-
+Taking a closer look at the first two components, figures \@ref(fig:scree-pc1) and  \@ref(fig:scree-pc2) shows the 10 main contributing variables to each component.  
 ```{r scree-pc1, fig.cap="Contributions of variables to PC 1"}
 #Screeplot of contributing variables to PC1
 fviz_contrib(res.pca,
@@ -130,11 +127,8 @@ fviz_contrib(res.pca,
              top = 10) +
   theme_bw()
 ```
-
-
-
-
-
+  
+  
 ```{r scree-pc2, fig.cap="Contributions of variables to PC 2"}
 #Screeplot of contributing variables to PC2
 fviz_contrib(res.pca,
@@ -145,15 +139,10 @@ fviz_contrib(res.pca,
              top = 10) +
   theme_bw()
 ```
+  
+The result of the PCA analysis can be seen in figure \@ref(fig:pca-biplot). Most of the measurements group in a larger cluster, demonstrating little difference in their elemental composition in regards to the  color of the quartzite.  
 
-
-
-
-
-
-The result of the PCA analysis can be seen in figure \@ref(fig:pca-biplot). Most of the measurements group in a larger cluster, demonstrating little difference in their elemental composition in regards to the  color of the quartzite. 
-
-```{r pca-biplot, fig.width=10, fig.cap="Biplot of PCA analysis with PC1 and PC2, no clear clustering can be seen related to the color of the material"}
+```{r pca-biplot, fig.height=8, fig.width=10, fig.cap="Biplot of PCA analysis with PC1 and PC2, no clear clustering can be seen related to the color of the material"}
 #Draw biplot to visualize result
 fviz_pca_biplot(res.pca, axes = c(1, 2),
                 geom.ind = "point", # show points only (but not "text")
